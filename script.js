@@ -1,3 +1,5 @@
+"use strict";
+
 const cards = [
     {frontImage: "./images/forest.jpg"},
     {frontImage: "./images/plains.jpg"},
@@ -9,22 +11,54 @@ const cards = [
     {frontImage: "./images/goblin.jpg"}
 ];
 
-const memoryBoard = document.querySelector(".memory-board");
+// Duplicate the array of items in the object cards
+const allCards = cards.concat(cards);
+
+
+// Shuffle the array 
+const shuffle = (cards) => {
+    var ctr = cards.length, temp, index;
+
+    while (ctr > 0) {
+        index = Math.floor(Math.random() * ctr);
+        ctr--;
+        temp = cards[ctr];
+        cards[ctr] = cards[index];
+        cards[index] = temp;
+    }
+    return cards;
+};
+
+
 
 // Create a card template 
-
-const createCard = (frontImage) => {
+const createCard = (frontImage, index) => {
     return `<div class="memory-card">
-    <img class="front-image" src="${frontImage}" alt="">
-    <img class="back-image" src="./images/cardbackground.jpg" alt="">
+    <img class="front-image" src="${frontImage}" data-card-index="${index}" alt="">
+    <img class="back-image" src="./images/cardbackground.jpg" alt="Magic the Gathering card back">
     </div>`;
 };
 
+
+// Print the cards intoo the html 
 const generateCards = () => {
-    cards.forEach(item => {
-        const element = createCard(item.frontImage);
+    shuffle(allCards);
+    const memoryBoard = document.querySelector(".memory-board");
+    allCards.forEach((card, index) => {
+        const element = createCard(card.frontImage, index);
         memoryBoard.innerHTML += element;
     })
-}
+};
+
 
 generateCards();
+
+// Flips the card when clicked 
+const memoryCards = document.querySelectorAll('.memory-card');
+
+// The reason why im not using an arrow function here is because an arrow function is an anonymous function and could not use "this"
+function flipCard() {
+    this.classList.toggle('flip');
+};
+
+memoryCards.forEach(memoryCard => memoryCard.addEventListener('click', flipCard));

@@ -30,24 +30,41 @@ h1 {
     flex-direction: row;
     /* justify-content: space-between; */
     flex-wrap: wrap;
+    perspective: 1000px;
 }
 
 .memory-card {
-    background-color: hotpink;
     border-radius: 5px;
     height: 180px;
     width: 130px;
     margin: 10px;
+    transform: scale(1);
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    box-shadow: 2px 2px 2px rgba(0,0,0,.3);
 }
 
-.front-image {
-    width: 100%;
-    height: auto;
+.memory-card:active {
+    transform: scale(0.95);
+    transition: transform .2s;
 }
 
+.memory-card.flip {
+    transform: rotateY(180deg);
+}
+
+.front-image,
 .back-image {
     width: 100%;
     height: auto;
+    position: absolute;
+    /* border-radius: 1px; WHY DOES REMOVE THE WHOLE FRONT-IMAGE CARD? */
+    backface-visibility: hidden;
+}
+
+.front-image {
+    transform: rotateY(180deg);
 }
 
 .replay {
