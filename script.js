@@ -40,7 +40,7 @@ const createCard = (frontImage, type) => {
 };
 
 
-// Print the cards intoo the html 
+// Print the cards into the html-page
 const generateCards = () => {
     shuffle(allCards);
     const memoryBoard = document.querySelector(".memory-board");
@@ -77,24 +77,26 @@ const flipCard = (event) => {
     
 };
 
-            
+// Checks if the dataset of the cards match 
 const checkMatch = () => {
 
     if (firstCard.dataset.type === secondCard.dataset.type) {
         disableCards();
         return;
-        } else {
-            unflipCards();
-        }
+    } else {
+        unflipCards();
+    }
 
 
 };
 
+// Prevents the cards from being unflipped and clicked at when matched 
 const disableCards = () => {
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
 };
 
+// Unflips the cards if they do not match
 const unflipCards = () => {
     setTimeout(() => {
         firstCard.parentElement.classList.remove('flip');
@@ -104,3 +106,12 @@ const unflipCards = () => {
 
 
 memoryCards.forEach(memoryCard => memoryCard.addEventListener('click', flipCard));
+
+
+// IMPLEMENT RESET FUNCTION HERE 
+const resetGame = () => {
+
+}
+
+const replaytBtn = document.querySelector('.replay');
+replaytBtn.addEventListener('click', resetGame);

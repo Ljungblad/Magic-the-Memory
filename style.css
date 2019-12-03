@@ -24,24 +24,23 @@ h1 {
 }
 
 .memory-board {
-    /* height: 80%; */
     width: 90%;
     display: flex;
     flex-direction: row;
-    /* justify-content: space-between; */
     flex-wrap: wrap;
     perspective: 1000px;
 }
 
 .memory-card {
-    border-radius: 5px;
     height: 180px;
     width: 130px;
     margin: 10px;
     transform: scale(1);
     position: relative;
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
     transition: transform 0.6s;
+    -webkit-transition: transform 0.6s;
     box-shadow: 2px 2px 2px rgba(0,0,0,.3);
 }
 
@@ -52,6 +51,7 @@ h1 {
 
 .memory-card.flip {
     transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
 }
 
 .front-image,
@@ -60,10 +60,12 @@ h1 {
     height: auto;
     position: absolute;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 .front-image {
     transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
 }
 
 .replay {
