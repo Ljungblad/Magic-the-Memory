@@ -67,10 +67,11 @@ const flipCard = (event) => {
             firstCard = targetCard.children[0];
             return;
             
+        } else {
+            secondCard = targetCard.children[0];
+            isFlipped = false;
         }
 
-        secondCard = targetCard.children[1];
-        isFlipped = false;
         
     checkMatch();
     
@@ -80,13 +81,9 @@ const flipCard = (event) => {
 const checkMatch = () => {
 
     if (firstCard.dataset.type === secondCard.dataset.type) {
-        console.log(firstCard);
-        console.log(secondCard.dataset);
-        console.log('hey');
         disableCards();
         return;
         } else {
-            console.log('unflip');
             unflipCards();
         }
 
@@ -96,14 +93,13 @@ const checkMatch = () => {
 const disableCards = () => {
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
-    console.log('disabled');
 };
 
 const unflipCards = () => {
     setTimeout(() => {
         firstCard.parentElement.classList.remove('flip');
         secondCard.parentElement.classList.remove('flip');
-    }, 2000);
+    }, 1500);
 };
 
 
