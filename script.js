@@ -110,6 +110,15 @@ memoryCards.forEach(memoryCard => memoryCard.addEventListener('click', flipCard)
 
 // IMPLEMENT RESET FUNCTION HERE 
 const resetGame = () => {
+    const cards = document.querySelectorAll('.memory-card');
+    cards.forEach(card => {
+        card.classList.remove('flip');
+        isFlipped = false;
+        setTimeout(() => {
+            let shuffle = Math.floor(Math.random() * cards.length);
+            card.style.order = shuffle;
+        }, 1000);
+    });
 
 }
 
