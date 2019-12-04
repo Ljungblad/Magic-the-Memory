@@ -17,7 +17,7 @@ const allCards = cards.concat(cards);
 
 // Shuffle the array 
 const shuffle = (cards) => {
-    var ctr = cards.length, temp, index;
+    let ctr = cards.length, temp, index;
 
     while (ctr > 0) {
         index = Math.floor(Math.random() * ctr);
@@ -50,15 +50,19 @@ const generateCards = () => {
     });
 };
 
-
 generateCards();
+
 
 const memoryCards = document.querySelectorAll('.memory-card');
 let isFlipped = false;
+let locked = false;
 let firstCard, secondCard;
 
 // Flips the card when clicked 
 const flipCard = (event) => {
+    if (locked) {
+        return;
+    }
     let targetCard = event.target.parentElement;
     targetCard.classList.add('flip');
         
@@ -98,9 +102,13 @@ const disableCards = () => {
 
 // Unflips the cards if they do not match
 const unflipCards = () => {
+    locked = true;
+    
     setTimeout(() => {
         firstCard.parentElement.classList.remove('flip');
         secondCard.parentElement.classList.remove('flip');
+
+        locked = false;
     }, 1500);
 };
 
