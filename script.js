@@ -1,14 +1,16 @@
 "use strict";
 
 const cards = [
-    { frontImage: "./images/forest.jpg", type: "forest" },
-    { frontImage: "./images/plains.jpg", type: "plains" },
-    { frontImage: "./images/island.jpg", type: "island" },
-    { frontImage: "./images/swamp.jpg", type: "swamp" },
-    { frontImage: "./images/mountain.jpg", type: "mountain" },
-    { frontImage: "./images/waste.jpg", type: "waste"},
-    { frontImage: "./images/saproling.jpg", type: "saproling" },
-    { frontImage: "./images/goblin.jpg", type: "goblin" },
+    { frontImage: "./images/forest.png", type: "forest" },
+    { frontImage: "./images/plains.png", type: "plains" },
+    { frontImage: "./images/island.png", type: "island" },
+    { frontImage: "./images/swamp.png", type: "swamp" },
+    { frontImage: "./images/mountain.png", type: "mountain" },
+    { frontImage: "./images/waste.png", type: "waste"},
+    { frontImage: "./images/saproling.png", type: "saproling" },
+    // { frontImage: "./images/goblin.png", type: "goblin" },
+    { frontImage: "./images/lotus.png", type: "lotus" },
+    { frontImage: "./images/force.png", type: "force" },
 ];
 
 // Duplicate the array of items in the object cards
@@ -35,7 +37,7 @@ const shuffle = (cards) => {
 const createCard = (frontImage, type) => {
     return `<div class="memory-card">
     <img class="front-image" src="${frontImage}" data-type="${type}" alt="">
-    <img class="back-image" src="./images/cardbackground.jpg" alt="Magic the Gathering card back">
+    <img class="back-image" src="./images/cardbackground.png" alt="Magic the Gathering card back">
     </div>`;
 };
 

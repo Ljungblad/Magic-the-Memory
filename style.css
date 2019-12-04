@@ -4,8 +4,13 @@
     padding: 0;
 }
 
-body {
-    background-color: tomato;
+.cover-image {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    object-fit: cover;
+
 }
 
 .container {
@@ -14,32 +19,31 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
 }
 
 h1 {
     font-family: 'Bebas Neue';
     font-size: 76px;
+    margin: 20px;
 }
 
 .memory-board {
-    width: 90%;
+    width: 750px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     perspective: 1000px;
-    /* -webkit-perspective: 1000px; */
 }
 
 .memory-card {
-    height: 180px;
-    width: 130px;
+    height: 150px;
+    width: 105px;
     margin: 10px;
     position: relative;
     box-shadow: 2px 2px 2px rgba(0,0,0,.3);
+    border-radius: 6px;
     transform: scale(1);
     transform-style: preserve-3d;
-    /* -webkit-transform-style: preserve-3d; */
     transition: transform 0.5s;
 }
  
@@ -58,9 +62,7 @@ h1 {
     height: 100%;
     position: absolute;
     backface-visibility: hidden;
-    /* -webkit-backface-visibility: hidden; */
     opacity: 0.99;
-    border-radius: 6px;
 }
 
 
@@ -72,10 +74,30 @@ h1 {
 .replay {
     font-family: 'Oswald', sans-serif;
     font-size: 32px;
-    border-radius: 5px;
     height: 60px;
-    width: 100px;
-    margin-bottom: 80px;
+    width: 120px;
     background-color: #010101;
     color: whitesmoke;
+    margin: 20px;
+    border-radius: 50px;
+}
+
+@media screen and (max-width: 800px) {
+    .memory-board {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    h1 {
+        font-size: 48px;
+    }
+
+    .memory-card {
+        height: 95px;
+        width: 50px;
+        margin: 5px;
+    }
 }
