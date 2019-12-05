@@ -108,9 +108,9 @@ const unflipCards = () => {
     locked = true;
     
     setTimeout(() => {
+        firstCard.parentElement.classList.remove('lock-pointer');
         firstCard.parentElement.classList.remove('flip');
         secondCard.parentElement.classList.remove('flip');
-        removePointerEvent();
         locked = false;
     }, 1000);
 }
@@ -123,18 +123,13 @@ memoryCards.forEach(memoryCard => memoryCard.addEventListener('click', flipCard)
 const resetGame = () => {
     memoryCards.forEach(card => {
         card.classList.remove('flip');
+        card.classList.remove('lock-pointer');
         isFlipped = false;
-        removePointerEvent();
         setTimeout(() => {
             let shuffle = Math.floor(Math.random() * cards.length);
             card.style.order = shuffle;
         }, 500);
     });
-}
-
-// Removes the class that sets the pointer-event to none 
-const removePointerEvent = () => {
-    firstCard.parentElement.classList.remove('lock-pointer');
 }
 
 // Adds the resetGame function to the Replay button 
