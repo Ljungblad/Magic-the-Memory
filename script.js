@@ -8,7 +8,6 @@ const cards = [
     { frontImage: "./images/mountain.png", type: "mountain" },
     { frontImage: "./images/waste.png", type: "waste"},
     { frontImage: "./images/saproling.png", type: "saproling" },
-    // { frontImage: "./images/goblin.png", type: "goblin" },
     { frontImage: "./images/lotus.png", type: "lotus" },
     { frontImage: "./images/force.png", type: "force" },
 ];
@@ -29,7 +28,7 @@ const shuffle = (cards) => {
         cards[index] = temp;
     }
     return cards;
-};
+}
 
 
 
@@ -39,7 +38,7 @@ const createCard = (frontImage, type) => {
     <img class="front-image" src="${frontImage}" data-type="${type}" alt="">
     <img class="back-image" src="./images/cardbackground.png" alt="Magic the Gathering card back">
     </div>`;
-};
+}
 
 
 // Print the cards into the html-page
@@ -50,7 +49,7 @@ const generateCards = () => {
         const element = createCard(card.frontImage, card.type);
         memoryBoard.innerHTML += element;
     });
-};
+}
 
 generateCards();
 
@@ -71,6 +70,8 @@ const flipCard = (event) => {
         if (!isFlipped) {
             isFlipped = true;
             firstCard = targetCard.children[0];
+            // Prevents the first card from being dubble clicked and matched 
+            targetCard.classList.add('lock-pointer');
             return;
             
         } else {
@@ -81,7 +82,7 @@ const flipCard = (event) => {
         
     checkMatch();
     
-};
+}
 
 // Checks if the dataset of the cards match 
 const checkMatch = () => {
@@ -94,13 +95,13 @@ const checkMatch = () => {
     }
 
 
-};
+}
 
 // Prevents the cards from being unflipped and clicked at when matched 
 const disableCards = () => {
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
-};
+}
 
 // Unflips the cards if they do not match
 const unflipCards = () => {
@@ -109,28 +110,33 @@ const unflipCards = () => {
     setTimeout(() => {
         firstCard.parentElement.classList.remove('flip');
         secondCard.parentElement.classList.remove('flip');
-
+        removePointerEvent();
         locked = false;
-    }, 1500);
-};
+    }, 500);
+}
 
-
+// Adds a click event to all cards 
 memoryCards.forEach(memoryCard => memoryCard.addEventListener('click', flipCard));
 
 
-// IMPLEMENT RESET FUNCTION HERE 
+// Resets the game
 const resetGame = () => {
-    // const cards = document.querySelectorAll('.memory-card');
     memoryCards.forEach(card => {
         card.classList.remove('flip');
         isFlipped = false;
+        removePointerEvent();
         setTimeout(() => {
             let shuffle = Math.floor(Math.random() * cards.length);
             card.style.order = shuffle;
         }, 1000);
     });
-
 }
 
+// Removes the class that sets the pointer-event to none 
+const removePointerEvent = () => {
+    firstCard.parentElement.classList.remove('lock-pointer');
+}
+
+// Adds the resetGame function to the Replay button 
 const replaytBtn = document.querySelector('.replay');
 replaytBtn.addEventListener('click', resetGame);

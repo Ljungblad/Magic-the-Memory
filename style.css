@@ -22,9 +22,11 @@
 }
 
 h1 {
-    font-family: 'Bebas Neue';
+    font-family: 'Metamorphous', cursive;
+    color: #111111;
     font-size: 76px;
     margin: 20px;
+    /* text-shadow: 1px 1px 8px #aaaaaa; */
 }
 
 .memory-board {
@@ -72,17 +74,26 @@ h1 {
 }
 
 .replay {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Metamorphous', cursive;
     font-size: 32px;
-    height: 60px;
-    width: 120px;
+    height: 80px;
+    width: 200px;
     background-color: #010101;
     color: whitesmoke;
     margin: 20px;
     border-radius: 50px;
 }
 
+.lock-pointer {
+    pointer-events: none;
+}
+
 @media screen and (max-width: 800px) {
+
+    h1 {
+        text-align: center;
+    }
+
     .memory-board {
         width: 100%;
         height: auto;
@@ -96,7 +107,7 @@ h1 {
     }
 
     .memory-card {
-        height: 95px;
+        height: 75px;
         width: 50px;
         margin: 5px;
     }
