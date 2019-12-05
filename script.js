@@ -112,7 +112,7 @@ const unflipCards = () => {
         secondCard.parentElement.classList.remove('flip');
         removePointerEvent();
         locked = false;
-    }, 500);
+    }, 1000);
 }
 
 // Adds a click event to all cards 
@@ -128,7 +128,7 @@ const resetGame = () => {
         setTimeout(() => {
             let shuffle = Math.floor(Math.random() * cards.length);
             card.style.order = shuffle;
-        }, 1000);
+        }, 500);
     });
 }
 
