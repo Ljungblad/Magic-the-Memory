@@ -12,6 +12,26 @@ const cards = [
     { frontImage: "./images/force.png", type: "force" },
 ];
 
+// Overlay pop-up when the game is over 
+const congratOverlay = document.getElementById("congratulations-overlay");
+
+const displayOverlay = () => {
+    congratOverlay.style.display = "block";
+  }
+
+// Closes the overlay when click on the cross 
+const span = document.querySelector('.close');
+span.onclick = () => {
+    congratOverlay.style.display = "none";
+  }
+
+  // Closes the overlay when click outside the overlay frame 
+window.onclick = (event) => {
+    if (event.target == congratOverlay) {
+      congratOverlay.style.display = "none";
+    }
+  }
+
 // Duplicate the array of items in the object cards
 const allCards = cards.concat(cards);
 
@@ -85,10 +105,20 @@ const flipCard = (event) => {
     
 }
 
+let counter = 0;
 // Checks if the dataset of the cards match 
 const checkMatch = () => {
 
     if (firstCard.dataset.type === secondCard.dataset.type) {
+        counter++;
+        // allCards.length / 2 
+        if(counter === (1)) {
+            setTimeout(() => {
+                displayOverlay();
+                counter = 0;
+            }, 700);
+        }
+
         disableCards();
         return;
     } else {
@@ -122,6 +152,8 @@ memoryCards.forEach(memoryCard => memoryCard.addEventListener('click', flipCard)
 
 // Resets the gameboard
 const resetGame = () => {
+    congratOverlay.style.display = "none";
+    counter = 0;
     memoryCards.forEach(card => {
         card.classList.remove('flip');
         card.classList.remove('lock-pointer');
@@ -134,5 +166,5 @@ const resetGame = () => {
 }
 
 // Adds the resetGame function to the Replay button 
-const replaytBtn = document.querySelector('.replay');
-replaytBtn.addEventListener('click', resetGame);
+const replaytBtns = document.querySelectorAll('.replay-btn');
+replaytBtns.forEach(replaytBtn => replaytBtn.addEventListener('click', resetGame));
