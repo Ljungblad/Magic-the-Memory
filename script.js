@@ -70,6 +70,7 @@ const flipCard = (event) => {
         if (!isFlipped) {
             isFlipped = true;
             firstCard = targetCard.children[0];
+
             // Prevents the first card from being dubble clicked and matched 
             targetCard.classList.add('lock-pointer');
             return;
@@ -119,14 +120,14 @@ const unflipCards = () => {
 memoryCards.forEach(memoryCard => memoryCard.addEventListener('click', flipCard));
 
 
-// Resets the game
+// Resets the gameboard
 const resetGame = () => {
     memoryCards.forEach(card => {
         card.classList.remove('flip');
         card.classList.remove('lock-pointer');
         isFlipped = false;
         setTimeout(() => {
-            let shuffle = Math.floor(Math.random() * cards.length);
+            let shuffle = Math.floor(Math.random() * memoryCards.length);
             card.style.order = shuffle;
         }, 500);
     });
