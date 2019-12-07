@@ -27,8 +27,15 @@
     margin: 15px;
 }
 
+.main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .memory-board {
-    width: 780px;
+    width: 750px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -81,7 +88,7 @@
 .bottom-bar {
     display: flex;
     justify-content: space-between;
-    padding-right: 30px;
+    width: 100%;
 }
 
 .clicks {
@@ -92,14 +99,14 @@
     font-size: 32px;
     height: 60px;
     width: 200px;
-    background: linear-gradient(#56342A, rgb(122, 86, 52));
-    color: #D7BA89;
+    /* background: linear-gradient(#56342A, rgb(122, 86, 52)); */
+    /* color: #D7BA89; */
     margin: 10px;
     margin-top: 20px;
     border-radius: 5px;
-    border-left: none;
-    border-right: none;
-    box-shadow: 2px 2px 5px rgba(37, 37, 37, 0.856);
+    /* box-shadow: 2px 2px 5px rgba(37, 37, 37, 0.856); */
+    background-color: rgba(249, 249, 249, 0.4);
+    text-shadow: 0 1px 0 black;
 }
 
 .addClicks {
@@ -119,8 +126,6 @@
     margin: 10px;
     margin-top: 20px;
     border-radius: 5px;
-    border-left: none;
-    border-right: none;
     box-shadow: 2px 2px 5px rgba(37, 37, 37, 0.856);
 }
 
@@ -138,7 +143,7 @@
     margin: 10px;
     margin-top: 20px;
     border-radius: 5px;
-    border: 2px solid rgb(165, 114, 26);
+    border: 3px solid rgb(165, 114, 26);
     border-left: none;
     border-right: none;
     cursor: pointer;
@@ -253,11 +258,6 @@ p {
         margin: 30px;
     }
 
-    .memory-board {
-        width: 100%;
-        height: auto;
-    }
-
     .overlay {
         padding-top: 3%;
     }
@@ -267,8 +267,8 @@ p {
 /* MEDIA QUERIES  */
 @media screen and (max-width: 600px) {
 
-    h1 {
-        font-size: 48px;
+    .memory-board {
+        width: 360px;
     }
 
     .memory-card {
@@ -277,12 +277,18 @@ p {
         margin: 5px;
     }
 
-    .score {
-        margin-top: 10px;
+    .clicks {
+        width: 350px;
     }
 
-    .replay-btn {
+    .score {
         margin-top: 10px;
+        width: 350px;
+    }
+
+    .bottom-bar .replay-btn {
+        margin-top: 10px;
+        width: 350px;
     }
 
     .bottom-bar {
