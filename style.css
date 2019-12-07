@@ -274,7 +274,7 @@ p {
 @media screen and (max-width: 600px) {
 
     .memory-board {
-        width: 96%;
+        width: 100%;
     }
 
     .memory-card {
