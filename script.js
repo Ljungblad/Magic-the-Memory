@@ -15,8 +15,13 @@ const cards = [
 // Overlay pop-up when the game is over 
 const congratOverlay = document.getElementById("congratulations-overlay");
 
-const displayOverlay = () => {
+const displayOverlay = (score, clicks) => {
+    const finalScore = document.querySelector('.finalScore');
+    const finalClicks = document.querySelector('.finalClicks');
+    finalScore.innerHTML = score;
+    finalClicks.innerHTML = clicks;
     congratOverlay.style.display = "block";
+
   }
 
 // Closes the overlay when click on the cross 
@@ -71,7 +76,23 @@ const generateCards = () => {
     });
 }
 
+// Adds click count to the clickboard 
+const clickBoard = document.querySelector('.addClicks');
+let clicks = 0;
+const addClicks = () => {
+    clickBoard.innerHTML = clicks;
+}
+
+// Adds score count to the scoreboard 
+const scoreBoard = document.querySelector('.addScore');
+let score = 0;
+const addScore = () => {
+    scoreBoard.innerHTML = score;
+}
+
 generateCards();
+addClicks();
+addScore();
 
 
 const memoryCards = document.querySelectorAll('.memory-card');
@@ -86,6 +107,8 @@ const flipCard = (event) => {
     }
     let targetCard = event.target.parentElement;
     targetCard.classList.add('flip');
+    clicks++;
+    addClicks();
         
         if (!isFlipped) {
             isFlipped = true;
@@ -105,17 +128,16 @@ const flipCard = (event) => {
     
 }
 
-let counter = 0;
 // Checks if the dataset of the cards match 
 const checkMatch = () => {
 
     if (firstCard.dataset.type === secondCard.dataset.type) {
-        counter++;
+        score++;
+        addScore();
         // allCards.length / 2 
-        if(counter === (1)) {
+        if(score === (3)) {
             setTimeout(() => {
-                displayOverlay();
-                counter = 0;
+                displayOverlay(score, clicks);
             }, 700);
         }
 
@@ -129,7 +151,7 @@ const checkMatch = () => {
 }
 
 // Prevents the cards from being unflipped and clicked at when matched 
-const disableCards = () => {
+const disableCards = (event) => {
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
 }
@@ -153,7 +175,10 @@ memoryCards.forEach(memoryCard => memoryCard.addEventListener('click', flipCard)
 // Resets the gameboard
 const resetGame = () => {
     congratOverlay.style.display = "none";
-    counter = 0;
+    score = 0;
+    clicks = 0;
+    addScore();
+    addClicks();
     memoryCards.forEach(card => {
         card.classList.remove('flip');
         card.classList.remove('lock-pointer');
