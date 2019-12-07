@@ -274,7 +274,7 @@ p {
 @media screen and (max-width: 600px) {
 
     .memory-board {
-        width: 360px;
+        width: 96%;
     }
 
     .memory-card {
@@ -284,17 +284,17 @@ p {
     }
 
     .clicks {
-        width: 350px;
+        width: 92%;
     }
 
     .score {
         margin-top: 10px;
-        width: 350px;
+        width: 92%;
     }
 
     .bottom-bar .replay-btn {
         margin-top: 10px;
-        width: 350px;
+        width: 92%;
     }
 
     .replay-btn:hover {
