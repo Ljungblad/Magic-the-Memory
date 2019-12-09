@@ -1,10 +1,9 @@
 # Magic the Memory
-<img src="https://media.giphy.com/media/14nUsH2z8szLIQ/giphy.gif">
+<img src="https://media.giphy.com/media/14nUsH2z8szLIQ/giphy.gif" width="100%">
 
 Memory game made by <a href="https://github.com/Ljungblad">Victor Ljungblad</a>
 
-
-Made in HTML, CSS and JavaScript
+Made with HTML, CSS and JavaScript.
 
 ## How to play
 1. [Clone] <a href="https://github.com/Ljungblad/Magic-the-Memory">this</a> in GitHub Desktop,
