@@ -16,3 +16,10 @@ Made with HTML, CSS and JavaScript.
 
 * <a href="https://github.com/henricbjork">Henric Björkvall</a>
 * <a href="https://github.com/jesperlndqvst">Jesper Lundqvist</a>
+
+## Code Review
+by Julia Karlsson
+* script.js - Good describing comments, makes it easier to read and understand the code.
+* style.css:110,129 - Maybe use kebab-case on all class names for consistency in case style in css. Ex. addScore, addClicks.
+* index.html:34 - Remove one tab space for consistency.
+* script.js - Nice consistent case style using camelCase in script.
