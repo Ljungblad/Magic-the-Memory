@@ -1,9 +1,16 @@
 # Magic the Memory
 <img src="https://media.giphy.com/media/12NUbkX6p4xOO4/giphy.gif">
-Memory game assignment in JavaScript.
 
-## Author
-* <a href="https://github.com/Ljungblad">Victor Ljungblad</a>
+* Memory game made by <a href="https://github.com/Ljungblad">Victor Ljungblad</a>
+
+Made in HTML, CSS and JavaScript
+
+## How to play
+1. [Clone] <a href="https://github.com/Ljungblad/Magic-the-Memory">this</a> in GitHub Desktop,
+`$ git clone https://github.com/Ljungblad/Magic-the-Memory` in bash or, if you're lazy, visit https://magicthememory.netlify.com/
+2. If you weren't lazy, open index.html
+3. Turn over the cards and match them until all cards are unflipped.
+4. Good luck!
 
 ## Testers
 
